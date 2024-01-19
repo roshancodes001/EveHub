@@ -5,13 +5,15 @@ import icon02 from "../assets/images/icon02.png";
 import icon03 from "../assets/images/icon03.png";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
+import About from "../components/About/About";
 
 
 const Home = () => {
   return (
     <>
-    <section className="hero__section  2xl:h-800px">
       {/* ----------------hero section----------*/}
+    <section className="hero__section  2xl:h-800px">
+    
       <div className="container flex justify-center pt-24">
         {/*---------Hero content--------*/}
         <div className="left w-[50%] mt-200px">
@@ -21,7 +23,7 @@ const Home = () => {
               <h1>EnLight Your</h1>
               <h1 className="pt-5">Moments With just</h1>
               <h1 className="pt-5">
-                A <span className="text-primaryColor ">Plan</span>
+                A <span className="text-blue-700 ">Plan</span>
               </h1>
             </h1>
             <p className="text__para">
@@ -60,6 +62,7 @@ const Home = () => {
         </div>
       </div>
       </section>
+        {/* ----------------hero section End----------*/}
       <section>
         <div className="container">
           <div className="lg:w-[470px] mx-auto">
@@ -125,6 +128,26 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <About/>
+
+      {/*----------------Servises Section------------ */}
+      <section>
+        <div className="container">
+          <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">Event Services</h2>
+            <p className="text__para text-center">
+              Find spectific organisers
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+
+      {/*----------------Servises Section------------ */}
+
+
+      
     </>
   );
 };
