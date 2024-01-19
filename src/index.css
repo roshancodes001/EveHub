@@ -23,6 +23,9 @@
     .header{
         @apply bg-no-repeat bg-center bg-cover w-full h-[100px] leading-[100px];
     }
+    .hero__section{
+       
+    }
 }
 
 @media only screen and (max-width:1024px) {
@@ -41,4 +44,5 @@
     .text__para {
         @apply text-[16px] leading-7 mt-3;
     }
+    
 }
