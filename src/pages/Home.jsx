@@ -3,9 +3,11 @@ import rbg from "../assets/images/rbg.png";
 import icon01 from "../assets/images/icon01.png";
 import icon02 from "../assets/images/icon02.png";
 import icon03 from "../assets/images/icon03.png";
+import featureImg from '../assets/images/feature-img.png';
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import About from "../components/About/About";
+import ServiceList from "../components/Services/ServiceList";
 
 
 const Home = () => {
@@ -139,13 +141,41 @@ const Home = () => {
               Find spectific organisers
             </p>
           </div>
-
+          <ServiceList />
         </div>
       </section>
 
 
-      {/*----------------Servises Section------------ */}
-
+      {/*----------------Servises end------------ */}
+      {/*----------------Freature Section------------- */}
+      <section>
+        <div className="container">
+          <div className="flex items-center justify-between flex-col lg:flex-row">
+            {/*------------Feature Content------ */}
+            <div className="xl:w-[670px]">
+              <h2 className="heading">Conduct Your Best Event<br/>Anytime,Anywhere</h2>
+              <ul className="pl-4">
+              
+                <li className="text__para">1.Effortless Scheduling</li>
+                <li className="text__para">2.24/7 Availability</li>
+                <li className="text__para">3.Instant Confirmation</li>
+                <li className="text__para">4.Customizable Availability</li>
+                <li className="text__para">5.Secure and Private</li>
+                <li className="text__para">6.User-Friendly Dashboard</li>
+              </ul>
+              <Link to="/">
+                <button className="btn">Learn More</button>
+              </Link>
+            </div>
+          {/*----------featur Image---------------- */}
+          <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
+            <img src={featureImg} className="w-3/4" alt=""/>
+          </div>
+          </div>
+        
+        </div>
+      </section>
+      
 
       
     </>
