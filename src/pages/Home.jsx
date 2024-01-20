@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import About from "../components/About/About";
 import ServiceList from "../components/Services/ServiceList";
+import OrganiserList from "../components/Organisers/OrganiserList";
 
 
 const Home = () => {
@@ -59,7 +60,7 @@ const Home = () => {
           </div>
         </div>
         {/*---------Hero img--------*/}
-        <div className="rigth w-[50%] flex flex-col items-center justify-end  ">
+        <div className="rigth w-[50%] flex flex-col items-end justify-end">
           <img src={rbg} alt="Heroright" className="w-full max-w-[500px]" />
         </div>
       </div>
@@ -147,7 +148,7 @@ const Home = () => {
 
 
       {/*----------------Servises end------------ */}
-      {/*----------------Freature Section------------- */}
+      {/*----------------Feature Section------------- */}
       <section>
         <div className="container">
           <div className="flex items-center justify-between flex-col lg:flex-row">
@@ -175,6 +176,23 @@ const Home = () => {
         
         </div>
       </section>
+      {/*----------------Features end------------ */}
+      {/*---------------Home Page Organisers-----------*/}
+
+      <section>
+      <div className="container">
+      <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">Event Organisers</h2>
+            <p className="text__para text-center">
+              Find spectific organisers
+            </p>
+          </div>
+        <OrganiserList/>
+      </div>
+      </section>
+
+      {/*---------------Home Page Organisers end-----------*/}
+
       
 
       
