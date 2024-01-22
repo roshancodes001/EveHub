@@ -1,6 +1,6 @@
-import doctorImg01 from "../images/doctor-img01.png";
-import doctorImg02 from "../images/doctor-img02.png";
-import doctorImg03 from "../images/doctor-img03.png";
+import organiserImg01 from "../images/organiser-img01.png";
+import organiserImg02 from "../images/organiser-img02.png";
+import organiserImg03 from "../images/organiser-img03.png";
 
 export const organisers = [
   {
@@ -9,9 +9,9 @@ export const organisers = [
     specialization: "Full Event",
     avgRating: 4.8,
     totalRating: 272,
-    photo: doctorImg01,
+    photo: organiserImg01,
     totalEvents: 1500,
-    address: "Mount Adora Hospital, Sylhet.",
+    address: "Adyar,Chennai",
   },
   {
     id: "02",
@@ -19,9 +19,9 @@ export const organisers = [
     specialization: "Party",
     avgRating: 4.8,
     totalRating: 272,
-    photo: doctorImg02,
-    totalEvents: 1500,
-    address: "Mount Adora Hospital, Sylhet.",
+    photo: organiserImg02,
+    totalEvents: 1120,
+    address: "Tambaram,Chennai.",
   },
   {
     id: "03",
@@ -29,8 +29,8 @@ export const organisers = [
     specialization: "Concert",
     avgRating: 4.8,
     totalRating: 272,
-    photo: doctorImg03,
-    totalEvents: 1500,
-    address: "Mount Adora Hospital, Sylhet.",
+    photo: organiserImg03,
+    totalEvents: 1210,
+    address: "Madurai,Tamil Nadu.",
   },
 ];

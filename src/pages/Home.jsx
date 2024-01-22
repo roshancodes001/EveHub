@@ -11,6 +11,8 @@ import ServiceList from "../components/Services/ServiceList";
 import OrganiserList from "../components/Organisers/OrganiserList";
 
 
+
+
 const Home = () => {
   return (
     <>
@@ -192,10 +194,7 @@ const Home = () => {
       </section>
 
       {/*---------------Home Page Organisers end-----------*/}
-
-      
-
-      
+             
     </>
   );
 };
