@@ -60,7 +60,7 @@ const Home = () => {
           </div>
         </div>
         {/*---------Hero img--------*/}
-        <div className="rigth w-[50%] flex flex-col items-end justify-end">
+        <div className="rigth w-[50%] flex flex-col items-end justify-end  ">
           <img src={rbg} alt="Heroright" className="w-full max-w-[500px]" />
         </div>
       </div>
