@@ -65,7 +65,7 @@ const quickLinks03 = [
     },
     {
         path: '/contact',
-        display: 'Contact'
+        display: 'Contact Us'
     },
 ];
 const Footer = () => {
@@ -76,7 +76,8 @@ const Footer = () => {
             <div className="container">
                 <div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px]">
                     <div>
-                        <img src={logo} alt="logo"/>
+                        <img src={logo} alt="" className="w-[162px] h-[66px]" />
+
                         <p className="text-[16px] leading-7 font-[400] text-textColor mt-4"> 
                         Copyright &copy; {year} developed by Roshan Kumar S all rights reserved
                         </p>
