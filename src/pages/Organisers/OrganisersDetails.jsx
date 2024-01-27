@@ -3,9 +3,10 @@ import organiserImg from "../../assets/images/organiser-img02.png";
 import starIcon from "../../assets/images/Star.png";
 import OrganiserAbout from "./OrganiserAbout";
 import Feedback from "./Feedback";
+import SidePanel from "./SidePanel";
 
 const OrganisersDetails = () => {
-    const [tab, setTab] = useState('about'); // Correct usage of useState
+    const [tab, setTab] = useState('about');
 
     return (
         <section>
@@ -55,6 +56,9 @@ const OrganisersDetails = () => {
 
                         </div>
 
+                    </div>
+                    <div>
+                        <SidePanel/>
                     </div>
                 </div>
             </div>
