@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import avatar from '../../assets/images/avatar-icon.png';
 import { formateDate } from '../../utils/formatDate';
 import {AiFillStar} from 'react-icons/ai';
-import FeedbackForm from './feedbackForm';
+import FeedbackForm from './FeedbackForm';
 
 
 const Feedback = () => {
