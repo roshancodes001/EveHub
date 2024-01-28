@@ -17,56 +17,62 @@ const Home = () => {
   return (
     <>
       {/* ----------------hero section----------*/}
-    <section className="hero__section  2xl:h-800px">
-    
-      <div className="container flex justify-center pt-24">
-        {/*---------Hero content--------*/}
-        <div className="left w-[50%] mt-200px">
-          {/*----------hero content----------*/}
-          <div className="lg:w-[570px]">
-            <h1 className="text-[46px] leading-[46px] text-headingColor font-[800] md:text-[60px]">
-              <h1>EnLight Your</h1>
-              <h1 className="pt-5">Moments With just</h1>
-              <h1 className="pt-5">
-                A <span className="text-blue-700 ">Plan</span>
-              </h1>
-            </h1>
-            <p className="text__para">
-              Get the best event organizer & <br /> Enlight the memories with
-              full of joy
-            </p>
-            <br />
-            <br />
-            <button className="btn">Book Appointments</button>
-          </div>
-          {/*---------Hero Counter------*/}
-          <div className="mt-[30px] lg:mt-[70px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px]">
-            <div>
-              <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
-                200+
-              </h2>
-              <p>Organisers</p>
-            </div>
-            <div>
-              <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
-                400+
-              </h2>
-              <p>Events</p>
-            </div>
-            <div>
-              <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
-                600+
-              </h2>
-              <p>Customers</p>
-            </div>
-          </div>
-        </div>
-        {/*---------Hero img--------*/}
-        <div className="rigth w-[50%] flex flex-col items-end justify-end  ">
-          <img src={rbg} alt="Heroright" className="w-full max-w-[500px]" />
-        </div>
-      </div>
-      </section>
+      <section className="hero__section 2xl:h-800px">
+  <div className="container flex justify-center pt-24">
+    {/*---------Hero content--------*/}
+    <div className="left w-full lg:w-[50%] mt-0 lg:mt-200px">
+      {/*----------hero content----------*/}
+      <div className="lg:w-[570px] text-center md:text-left"> {/* Center everything for mobile */}
+  <h1 className="text-[34px] leading-[38px] text-headingColor font-[800] md:text-[60px]">
+    <h1>EnLight Your</h1>
+    <h1 className="pt-5">Moments With just</h1>
+    <h1 className="pt-5">
+      A <span className="text-blue-700 ">Plan</span>
+    </h1>
+  </h1>
+  <p className="text__para md:hidden"> {/* Hide <br/> tag for mobile */}
+    Get the best event organizer &nbsp; Enlight the memories with
+    full of joy
+  </p>
+  <p className="text__para hidden md:block"> {/* Display <br/> tag for non-mobile */}
+    Get the best event organizer & <br /> Enlight the memories with
+    full of joy
+  </p>
+  <br className="hidden md:block" /> {/* Display <br/> tag for non-mobile */}
+  <button className="btn">Book Appointments</button>
+</div>
+
+      {/*---------Hero Counter------*/}
+      <div className="mt-5 lg:mt-[70px] flex flex-row md:flex-row items-center md:flex-wrap justify-center md:justify-start gap-5 lg:gap-[30px]">
+
+  <div className="flex flex-col items-center">
+    <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-violet-700 underline">
+      200+
+    </h2>
+    <p className="mt-1">Organisers</p>
+  </div>
+  <div className="flex flex-col items-center">
+    <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-purple-600 underline">
+      400+
+    </h2>
+    <p className="mt-1">Events</p>
+  </div>
+  <div className="flex flex-col items-center">
+    <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-fuchsia-600 underline">
+      600+
+    </h2>
+    <p className="mt-1">Customers</p>
+  </div>
+</div>
+
+    </div>
+    {/*---------Hero img--------*/}
+    <div className="rigth hidden lg:flex w-[50%] flex-col items-end justify-end">
+      <img src={rbg} alt="Heroright" className="w-full max-w-[500px]" />
+    </div>
+  </div>
+</section>
+
         {/* ----------------hero section End----------*/}
       <section>
         <div className="container">
@@ -155,25 +161,28 @@ const Home = () => {
         <div className="container">
           <div className="flex items-center justify-between flex-col lg:flex-row">
             {/*------------Feature Content------ */}
-            <div className="xl:w-[670px]">
-              <h2 className="heading">Conduct Your Best Event<br/>Anytime,Anywhere</h2>
+            <div className="xl:w-[670px] ">
+              <h2 className="heading text-center lg:text-left">Conduct Your Best Event<br/>Anytime,Anywhere</h2>
               <ul className="pl-4">
               
-                <li className="text__para">1.Effortless Scheduling</li>
-                <li className="text__para">2.24/7 Availability</li>
-                <li className="text__para">3.Instant Confirmation</li>
-                <li className="text__para">4.Customizable Availability</li>
-                <li className="text__para">5.Secure and Private</li>
-                <li className="text__para">6.User-Friendly Dashboard</li>
+                <li className="text__para text-center lg:text-left">1.Effortless Scheduling</li>
+                <li className="text__para text-center lg:text-left">2.24/7 Availability</li>
+                <li className="text__para text-center lg:text-left">3.Instant Confirmation</li>
+                <li className="text__para text-center lg:text-left">4.Customizable Availability</li>
+                <li className="text__para text-center lg:text-left">5.Secure and Private</li>
+                <li className="text__para text-center lg:text-left">6.User-Friendly Dashboard</li>
               </ul>
-              <Link to="/">
-                <button className="btn">Learn More</button>
-              </Link>
+              <div className="text-center lg:text-left mt-4 lg:mt-0">
+          <Link to="/">
+            <button className="btn">Learn More</button>
+          </Link>
+        </div>
             </div>
           {/*----------featur Image---------------- */}
-          <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
-            <img src={featureImg} className="w-3/4" alt=""/>
-          </div>
+          <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0 hidden md:flex md:justify-end">
+  <img src={featureImg} className="w-3/4 rounded-lg" alt=""/>
+</div>
+
           </div>
         
         </div>
@@ -196,20 +205,6 @@ const Home = () => {
       {/*---------------Home Page Organisers end-----------*/}
 
 
-      {/*----------------testimonial-------------- */}
-      <section>
-        <div className="container">
-        <div className="xl:w-[470px] mx-auto">
-            <h2 className="heading text-center">What our Customers say.</h2>
-            <p className="text__para text-center">
-              Find spectific organisers
-            </p>
-          </div>
-          
-        </div>
-      </section>
-
-      {/*----------------testimonial end-------------- */}
 
 
     </>
