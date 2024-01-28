@@ -194,7 +194,24 @@ const Home = () => {
       </section>
 
       {/*---------------Home Page Organisers end-----------*/}
-             
+
+
+      {/*----------------testimonial-------------- */}
+      <section>
+        <div className="container">
+        <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">What our Customers say.</h2>
+            <p className="text__para text-center">
+              Find spectific organisers
+            </p>
+          </div>
+          
+        </div>
+      </section>
+
+      {/*----------------testimonial end-------------- */}
+
+
     </>
   );
 };

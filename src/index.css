@@ -23,9 +23,17 @@
     .header{
         @apply bg-no-repeat bg-center bg-cover w-full h-[100px] leading-[100px];
     }
-    .hero__section{
-       
+    .form__label{
+        @apply text-textColor font-semibold text-[16px] leading-7 mb-2;
     }
+    .form__input {
+        @apply w-full px-4 py-3 border border-solid border-[#0066ff61] focus:outline-none focus:border-primaryColor text-[16px] leading-7 text-headingColor cursor-pointer rounded-md;
+    }
+    
+    
+    
+    
+
 }
 
 @media only screen and (max-width:1024px) {
