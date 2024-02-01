@@ -46,22 +46,22 @@ const Home = () => {
       <div className="mt-5 lg:mt-[70px] flex flex-row md:flex-row items-center md:flex-wrap justify-center md:justify-start gap-5 lg:gap-[30px]">
 
   <div className="flex flex-col items-center">
-    <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-violet-700 underline">
-      200+
+    <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] 0 ">
+      <b>200+</b>
     </h2>
-    <p className="mt-1">Organisers</p>
+    <p className="">Organisers</p>
   </div>
   <div className="flex flex-col items-center">
-    <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-purple-600 underline">
-      400+
+    <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] ">
+      <b>400+</b>
     </h2>
-    <p className="mt-1">Events</p>
+    <p className="">Events</p>
   </div>
   <div className="flex flex-col items-center">
-    <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] text-fuchsia-600 underline">
-      600+
+    <h2 className="text-[36px] leading-[56px] lg:text-[44px] lg:leading-[54px] font-[700] ">
+      <b>600+</b>
     </h2>
-    <p className="mt-1">Customers</p>
+    <p className="">Customers</p>
   </div>
 </div>
 
