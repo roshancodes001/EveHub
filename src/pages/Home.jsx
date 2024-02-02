@@ -39,7 +39,9 @@ const Home = () => {
     full of joy
   </p>
   <br className="hidden md:block" /> {/* Display <br/> tag for non-mobile */}
+  <Link to='/organisers'>
   <button className="btn">Get a Event Planner</button>
+  </Link>
 </div>
   {/*---------Hero Counter------*/}
       <div className="mt-5 lg:mt-[70px] flex flex-row md:flex-row items-center md:flex-wrap justify-center md:justify-start gap-5 lg:gap-[30px]">
@@ -178,7 +180,7 @@ const Home = () => {
         </div>
             </div>
           {/*----------featur Image---------------- */}
-          <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0 hidden md:flex md:justify-end">
+          <div className="relative z-10 xl:w-[770px]  justify-end mt-[50px] lg:mt-0 hidden md:flex md:justify-end">
   <img src={featureImg} className="w-3/4 rounded-lg" alt=""/>
 </div>
 
