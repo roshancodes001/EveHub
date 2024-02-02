@@ -68,7 +68,7 @@ const Home = () => {
 
     </div>
     {/*---------Hero img--------*/}
-    <div className="rigth hidden lg:flex w-[50%] flex-col items-end justify-end">
+    <div className="right hidden lg:flex w-[50%] flex-col items-end justify-end">
       <img src={rbg} alt="Heroright" className="w-full max-w-[500px]" />
     </div>
   </div>
@@ -166,12 +166,12 @@ const Home = () => {
               <h2 className="heading text-center lg:text-left">Conduct Your Best Event<br/>Anytime,Anywhere</h2>
               <ul className="pl-4">
               
-                <li className="text__para text-center lg:text-left">1.Effortless Scheduling</li>
-                <li className="text__para text-center lg:text-left">2.24/7 Availability</li>
-                <li className="text__para text-center lg:text-left">3.Instant Confirmation</li>
-                <li className="text__para text-center lg:text-left">4.Customizable Availability</li>
-                <li className="text__para text-center lg:text-left">5.Secure and Private</li>
-                <li className="text__para text-center lg:text-left">6.User-Friendly Dashboard</li>
+                <li className="text__para text-center lg:text-left">1. Effortless Scheduling</li>
+                <li className="text__para text-center lg:text-left">2. 24/7 Availability</li>
+                <li className="text__para text-center lg:text-left">3. Instant Confirmation</li>
+                <li className="text__para text-center lg:text-left">4. Customizable Availability</li>
+                <li className="text__para text-center lg:text-left">5. Secure and Private</li>
+                <li className="text__para text-center lg:text-left">6. User-Friendly Dashboard</li>
               </ul>
               <div className="text-center lg:text-left mt-4 lg:mt-0">
           <Link to="/">
