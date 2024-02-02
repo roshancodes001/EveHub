@@ -29,17 +29,14 @@ const quickLinks01 = [
         display: 'Home'
     },
     {
-        path: '/',
+        path: '/home',
         display: 'About Us'
     },
     {
         path: '/services',
         display: 'Services'
     },
-    {
-        path: '/',
-        display: 'Blog'
-    },
+    
 ];
 
 const quickLinks02 = [
@@ -48,19 +45,19 @@ const quickLinks02 = [
         display: 'Get an Organiser'
     },
     {
-        path: '/',
+        path: '/organisers',
         display: 'Request an Appointment'
     },
     {
-        path: '/',
-        display: 'Find a Location'
+        path: '/organisers',
+        display: 'Find by Location'
     },
 
 ];
 
 const quickLinks03 = [
     {
-        path: '/',
+        path: '/contact',
         display: 'Complaints'
     },
     {
