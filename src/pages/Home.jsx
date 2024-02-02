@@ -39,10 +39,9 @@ const Home = () => {
     full of joy
   </p>
   <br className="hidden md:block" /> {/* Display <br/> tag for non-mobile */}
-  <button className="btn">Book Appointments</button>
+  <button className="btn">Get a Event Planner</button>
 </div>
-
-      {/*---------Hero Counter------*/}
+  {/*---------Hero Counter------*/}
       <div className="mt-5 lg:mt-[70px] flex flex-row md:flex-row items-center md:flex-wrap justify-center md:justify-start gap-5 lg:gap-[30px]">
 
   <div className="flex flex-col items-center">
