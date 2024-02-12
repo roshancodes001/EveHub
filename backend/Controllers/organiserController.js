@@ -45,7 +45,9 @@ export const getSingleOrganiser = async (req, res) => {
     const id = req.params.id;
 
     try {
-        const organiser = await Organiser.findById(id).select('-password');//Excludes password while sending data;
+        const organiser = await Organiser.findById(id)
+            .populate("reviews")
+            .select('-password');//Excludes password while sending data;
 
         res.status(200).json({
             success: true,
