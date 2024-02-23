@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Organiser from "./OrganiserSchema";
+import Organiser from "./OrganiserSchema.js";
 
 const reviewSchema = new mongoose.Schema(
   {

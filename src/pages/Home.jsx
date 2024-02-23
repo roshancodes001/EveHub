@@ -23,11 +23,11 @@ const Home = () => {
     <div className="left w-full lg:w-[50%] mt-0 lg:mt-200px">
       {/*----------hero content----------*/}
       <div className="lg:w-[570px] text-center md:text-left"> {/* Center everything for mobile */}
-  <h1 className="text-[34px] leading-[38px] text-headingColor font-[800] md:text-[60px]">
+  <h1 className="text-[32px] leading-[38px] text-headingColor font-[1000] md:text-[54px] ">
     <h1>EnLight Your</h1>
-    <h1 className="pt-5">Moments With just</h1>
-    <h1 className="pt-5">
-      A <span className="text-blue-700 ">Plan</span>
+    <h1 className="pt-5 md:pt-10">Moments With just</h1>
+    <h1 className="pt-5 md:pt-10">
+      A <span className="text-blue-700 font-[2000]">Plan</span>
     </h1>
   </h1>
   <p className="text__para md:hidden"> {/* Hide <br/> tag for mobile */}
