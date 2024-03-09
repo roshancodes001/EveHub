@@ -1,4 +1,5 @@
 import Organiser from '../models/OrganiserSchema.js';
+import Booking from '../models/BookingSchema.js';
 
 export const updateOrganiser = async (req, res) => {
     const id = req.params.id;
@@ -92,3 +93,33 @@ export const getAllOrganiser = async (req, res) => {
         });
     }
 };
+
+export const getOrganiserProfile =async(req,res)=>{
+    const organiserId =req.userId
+    try{
+        const organiser=await Organiser.findById(organiserId)
+
+        if(!organiser){
+          return res
+            .status(404)
+            .json({success:false,message: 'Organiser not found'})  
+        }
+
+        const {password,...rest} =organiser._doc
+        const appointments= await Booking.find({organiser:organiserId})
+
+        res
+            .status(200)
+            .json({
+                success:true,
+                message:'Profile info is getting',
+                data:{...rest,appointments}})
+
+    }
+    catch(err){
+        return res
+                .status(500)
+                .json({success:false,message: 'Something went wrong cannot get'})  
+    }
+
+}

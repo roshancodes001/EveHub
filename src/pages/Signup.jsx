@@ -1,6 +1,5 @@
 import {useState} from "react";
 import signupImg from "../assets/images/signup.gif";
-import avatar from "../assets/images/customer-avatar.png";
 import { Link,useNavigate } from "react-router-dom";
 import uploadImageToCloudinary from "../utils/uploadCloudinary";
 import BASE_URL from '../config';
@@ -170,8 +169,9 @@ const Signup = () => {
                                         htmlFor="customerFile" 
                                         className="px-3 py-1 text-sm leading-6 bg-[#0066ff46] text-headingColor font-semibold rounded-lg cursor-pointer"
                                     >
-                                    Upload Photo
+                                    Upload Photo 
                                     </label>
+                                    
                                 </div>
                             </div>
                             <div className='mt-7'>
