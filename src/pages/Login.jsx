@@ -1,67 +1,54 @@
-import { useState,useContext } from 'react';
-import { Link,useNavigate } from 'react-router-dom';
-import {BASE_URL} from "../config.js";
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import {authContext} from '../context/AuthContext.jsx';
+import { authContext } from '../context/AuthContext.jsx';
 import HashLoader from 'react-spinners/HashLoader';
-
+import { signInWithEmailAndPassword } from 'firebase/auth'; // Importing only signInWithEmailAndPassword
+import { auth } from '../firebase'; // Import your firebase initialization here
 
 const Login = () => {
-
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
 
-    const [loading ,setLoading]=useState(false)
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const {dispatch} = useContext(authContext)
+    const { dispatch } = useContext(authContext);
 
-    const handleInputChange = e => {
+    const handleInputChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const submitHandler =async event => {
-        
+    const submitHandler = async (event) => {
         event.preventDefault();
         setLoading(true);
 
         try {
-            const res = await fetch(`${BASE_URL}/auth/login`,{
-                method:"post",
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body:JSON.stringify(formData)
-            })
-
-            const result= await res.json()
-
-            if (!res.ok){
-                throw new Error(result.message)
-            }
+            // Firebase login using email and password
+            const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
+            const user = userCredential.user;
 
             dispatch({
-                type:'LOGIN_SUCCESS',
-                payload:{
-                    user:result.data,
-                    token:result.token,
-                    role:result.role,
+                type: 'LOGIN_SUCCESS',
+                payload: {
+                    user: {
+                        uid: user.uid,
+                        email: user.email,
+                    },
+                    token: await user.getIdToken(),
+                    role: 'user'  // You can adjust this as per your app's role management
                 },
             });
 
-            console.log(result,'login data');
-
-            setLoading(false)
-            toast.success(result.message)
-            navigate("/Home")
+            setLoading(false);
+            toast.success('Login successful!');
+            navigate("/Home");
         } catch (err) {
-            toast.error(err.message)
-            setLoading(false)
+            toast.error(err.message);
+            setLoading(false);
         }
-
-    }
-
+    };
 
     return (
         <section className="px-5 lg:px-0">
@@ -69,7 +56,7 @@ const Login = () => {
                 <h3 className="text-headingColor text-[22px] leading-9 font-bold md-10">
                     Hello! <span className="text-primaryColor">Welcome </span> Back 🎉
                 </h3>
-                <br/>
+                <br />
                 <form className="py-4 md:py-0" onSubmit={submitHandler}>
                     <div className="mb-5">
                         <input
@@ -98,18 +85,15 @@ const Login = () => {
                         />
                     </div>
                     <div className='mt-7'>
-
                         <button type='submit' className='w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg px-4 py-3'>
-                            {loading ? <HashLoader size={25} color="#fff"/> : 'Login'}
+                            {loading ? <HashLoader size={25} color="#fff" /> : 'Login'}
                         </button>
-
                     </div>
 
                     <p className='mt-5 text-textColor text-center'>
-                        Don&apos;t have  an account? {" "}
+                        Don&apos;t have an account? {" "}
                         <Link to='/register' className='text-primaryColor font-medium ml-1'>Register</Link>
                     </p>
-
                 </form>
             </div>
         </section>

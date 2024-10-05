@@ -1,9 +1,10 @@
-import {useEffect,useRef,useContext} from "react";
+import { useEffect, useRef, useContext, useState } from "react";
 import logo from "../../assets/images/logo.png";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
 import { authContext } from "../../context/AuthContext";
-
+import { getDoc, doc } from "firebase/firestore"; // Import Firestore methods
+import { db } from "../../firebase"; // Make sure to import your Firestore config
 
 const navLinks = [
   {
@@ -24,41 +25,59 @@ const navLinks = [
   },
 ];
 
-
- 
-
-
 const Header = () => {
-  const headerRef=useRef(null)
-  const menuRef = useRef(null)
-  const {user,role,token} = useContext(authContext);
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+  const { user, role, token } = useContext(authContext);
+  const [profileImageUrl, setProfileImageUrl] = useState(null); // State for profile image
 
-  const handleStickyHeader=()=>{
-    window.addEventListener('scroll',()=>{
-      if(document.body.scrollTop>80 || document.documentElement.scrollTop>80){
-        headerRef.current.classList.add('sticky__header')
-      }else{
-        headerRef.current.classList.remove('sticky__header')
+  // Fetch user's profile image from Firestore based on UID
+  const fetchProfileImage = async () => {
+    if (user?.uid) {
+      try {
+        const userDocRef = doc(db, 'users', user.uid); // Reference to user document in Firestore
+        const userDoc = await getDoc(userDocRef);
+        
+
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          setProfileImageUrl(userData.photo); // Set the profile photo from Firestore
+        } else {
+          console.error("No user document found!");
+        }
+      } catch (error) {
+        console.error("Error fetching user profile image from Firestore:", error);
       }
+    }
+  };
 
-    })
-  }
+  const handleStickyHeader = () => {
+    window.addEventListener('scroll', () => {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        headerRef.current.classList.add('sticky__header');
+      } else {
+        headerRef.current.classList.remove('sticky__header');
+      }
+    });
+  };
 
-  useEffect(()=>{
-    handleStickyHeader()
-    return () =>window.removeEventListener('scroll',handleStickyHeader)
-  })
-const toggleMenu=()=> menuRef.current.classList.toggle('show__menu')
+  useEffect(() => {
+    handleStickyHeader();
+    if (user && user.uid) {
+      fetchProfileImage(); // Fetch profile image when user is logged in and has UID
+    }
+    return () => window.removeEventListener('scroll', handleStickyHeader);
+  }, [user]);
 
+  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
 
   return (
-    <header className="header flex items-center" ref={headerRef}> 
+    <header className="header flex items-center" ref={headerRef}>
       <div className="container">
         <div className="flex items-center justify-between">
           {/*-----------------Logo----------------------------*/}
           <div>
-          <img src={logo} alt="" className="w-[162px] h-[66px]" />
-
+            <img src={logo} alt="Logo" className="w-[162px] h-[66px]" />
           </div>
           {/*---------------Menu------------------*/}
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
@@ -67,10 +86,11 @@ const toggleMenu=()=> menuRef.current.classList.toggle('show__menu')
                 <li key={index}>
                   <NavLink
                     to={link.path}
-                    className={(navClass) => 
-                        navClass.isActive 
-                        ? 'text-primaryColor text-[16px] leading-7 font-[600]' 
-                        : 'text-textColor text-[16px] leading-7 font-[500] hover:text-primaryColor'}
+                    className={(navClass) =>
+                      navClass.isActive
+                        ? 'text-primaryColor text-[16px] leading-7 font-[600]'
+                        : 'text-textColor text-[16px] leading-7 font-[500] hover:text-primaryColor'
+                    }
                   >
                     {link.display}
                   </NavLink>
@@ -80,26 +100,27 @@ const toggleMenu=()=> menuRef.current.classList.toggle('show__menu')
           </div>
           {/*-------------------nav right-------------*/}
           <div className="flex items-center gap-4">
-          
-          {
-            token && user ? <div>
-            <Link to={`${role==='doctor' ? '/doctors/profile/me' : '/users/profile/me'}`}>
-              <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
-                <img src={user?.photo} className="w-full rounded-full" alt=""/>
-              </figure>
-            </Link>
-          </div> : <Link to='/login'>
-              <button className="bg-primaryColor py-2 px-6 text-white text-[600] h-[44px] flex items-center justify-center rounded-[50px]">Login</button>
-            </Link>
-          }
+            {token && user ? (
+              <div>
+                <Link to={`${role === 'doctor' ? '/doctors/profile/me' : '/users/profile/me'}`}>
+                  <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
+                    {/* Display the user's profile image */}
+                    <img
+                      src={profileImageUrl || user?.photo} // Use the Firestore photo URL if available
+                      className="w-full h-full rounded-full object-cover"
+                      alt="User Profile"
+                    />
+                  </figure>
+                </Link>
+              </div>
+            ) : (
+              <Link to='/login'>
+                <button className="bg-primaryColor py-2 px-6 text-white text-[600] h-[44px] flex items-center justify-center rounded-[50px]">Login</button>
+              </Link>
+            )}
 
-
-
-            
-            
-            
             <span className="md:hidden" onClick={toggleMenu}>
-              <BiMenu className="w-6 h-6 cursor-pointer"/>
+              <BiMenu className="w-6 h-6 cursor-pointer" />
             </span>
           </div>
         </div>
