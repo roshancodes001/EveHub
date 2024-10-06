@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import MyBookings from './MyBookings';
 import Profile from './Profile';
 import { db } from '../../firebase'; // Import Firebase
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, deleteDoc } from 'firebase/firestore';
+import { getAuth, deleteUser } from 'firebase/auth'; // Import deleteUser
 import userImg from '../../assets/images/organiser-img01.png'; // Default Image
 
 const MyAccount = () => {
@@ -46,6 +47,33 @@ const MyAccount = () => {
     dispatch({ type: "LOGOUT" });
   };
 
+  // Function to delete user account with confirmation
+  const handleDeleteAccount = async () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+    
+    if (!confirmDelete) return; // If user cancels, do nothing
+
+    const auth = getAuth();
+    try {
+      // Delete Firestore document
+      if (user?.uid) {
+        await deleteDoc(doc(db, 'users', user.uid)); // Delete user document from Firestore
+      }
+
+      // Delete authentication user
+      await deleteUser(auth.currentUser); // Delete user from authentication
+
+      // Logout the user
+      handleLogout();
+
+      // Optionally, redirect to a different page after deletion
+      // e.g., history.push('/goodbye');
+    } catch (error) {
+      setError("Error deleting account");
+      console.error("Error deleting account:", error);
+    }
+  };
+
   return (
     <section>
       <div className='max-w-[1170px] px-5 mx-auto'>
@@ -78,9 +106,13 @@ const MyAccount = () => {
                   Logout
                 </button>
               </Link>
-              <button className='w-full bg-red-600 p-3 mt-4 text-[16px] leading-7 rounded-md text-white'>
+              <button 
+                onClick={handleDeleteAccount} 
+                className='w-full bg-red-600 p-3 mt-4 text-[16px] leading-7 rounded-md text-white'
+              >
                 Delete Account
               </button>
+              {error && <p className="text-red-600">{error}</p>} {/* Display error if any */}
             </div>
           </div>
 
