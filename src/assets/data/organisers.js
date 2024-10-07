@@ -26,7 +26,7 @@ export const organisers = [
   {
     id: "03",
     name: "PartyEx",
-    specialization: "Party",
+    specialization: "Party,marriage",
     avgRating: 4.8,
     totalRating: 272,
     photo: organiserImg03,
