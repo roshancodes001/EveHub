@@ -15,6 +15,7 @@ const OrganisersDetails = () => {
     const [tab, setTab] = useState('about');
     const [role, setRole] = useState(null); // To store the user's role
     const [userId, setUserId] = useState(null); // To store the user ID
+    const [userName,setUserName] = useState(null);
 
     useEffect(() => {
         // Fetch organiser details using the id (uid) from the route
@@ -63,6 +64,7 @@ const OrganisersDetails = () => {
             if (userDoc.exists()) {
                 const userDetails = userDoc.data();
                 setRole(userDetails.role); // Assuming role is a field in the user document
+                setUserName(userDetails.name);
             } else {
                 console.log("No such document!");
             }
@@ -121,7 +123,7 @@ const OrganisersDetails = () => {
                         </div>
                     </div>
                     {/* Conditionally render the SidePanel based on the user's role */}
-                    {role === 'customer' && <SidePanel userId={userId} />}
+                    {role === 'customer' && <SidePanel userId={userId} organizerId={organiserData.uid} organizerName={organiserData.name} userName={userName}/>}
                 </div>
             </div>
         </section>

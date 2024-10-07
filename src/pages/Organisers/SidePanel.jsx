@@ -3,10 +3,16 @@ import { db } from '../../firebase';
 import Modal from '../../utils/Modals'; // Import the Modal component
 import { collection, addDoc, updateDoc, doc, getDoc } from 'firebase/firestore';
 
-const SidePanel = ({ userId }) => {
+const SidePanel = ({ userId, organizerId, organizerName,userName }) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
+  const [timeSlot, setTimeSlot] = useState('10:00 AM - 6:00 PM'); // Default time slot, can be made dynamic
 
   const handleBookAppointment = () => {
+    if (!selectedDate) {
+      alert('Please select an appointment date.');
+      return;
+    }
     setModalOpen(true);
   };
 
@@ -16,9 +22,12 @@ const SidePanel = ({ userId }) => {
       // Create a new booking in the bookings collection
       const bookingRef = await addDoc(collection(db, 'bookings'), {
         userId: userId, // Associate the booking with the user
-        appointmentTime: '10:00 AM - 6:00 PM', // Make this dynamic based on the selected time slot
-        date: new Date().toISOString(), // Current date
-        status: 'Booked', // Additional fields can be added
+        userName: userName,
+        appointmentTime: timeSlot, // Use the selected time slot
+        date: selectedDate, // Use the selected date
+        status: 'Booked',
+        organizerId: organizerId, // Add organizer ID
+        organizerName: organizerName, // Add organizer name
       });
 
       // Get the user's document reference
@@ -68,9 +77,21 @@ const SidePanel = ({ userId }) => {
           ))}
         </ul>
       </div>
+
+      {/* Date picker for selecting appointment date */}
+      <div className='mt-5'>
+        <label className='text__para mt-0 font-semibold'>Select Appointment Date:</label>
+        <input 
+          type='date' 
+          value={selectedDate} 
+          onChange={(e) => setSelectedDate(e.target.value)} 
+          className='border p-2 mt-2 w-full rounded-md'
+        />
+      </div>
+
       <button 
         onClick={handleBookAppointment} 
-        className='btn px-2 w-full rounded-md'>
+        className='btn px-2 w-full rounded-md mt-5'>
         Book Appointment
       </button>
       
