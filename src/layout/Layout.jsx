@@ -2,8 +2,7 @@ import React from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Routers from "../routes/Routers";
-import ChatBot from "../components/ChatBot/ChatBot"; // Adjust path if needed
-import GenerativeAIComponent from "../components/ChatBot/ChatBot";
+import GenerativeAIComponent from "../components/Chatbot/ChatBot";
 
 const Layout = () => {
   return (
