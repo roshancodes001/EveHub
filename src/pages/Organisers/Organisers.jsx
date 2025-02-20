@@ -11,7 +11,7 @@ const Organisers = () => {
   useEffect(() => {
     const fetchOrganisers = async () => {
       try {
-        const q = query(collection(db, "users"), where("role", "==", "organiser"));
+        const q = query(collection(db, "users"), where("role", "==", "organizer"));
         const querySnapshot = await getDocs(q);
         const organisersData = querySnapshot.docs.map((doc) => ({
           id: doc.id,

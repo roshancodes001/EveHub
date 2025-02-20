@@ -44,7 +44,7 @@ const GenerativeAIComponent = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const apiKey = 'AIzaSyAw3m7ZX9s8zTl3aYwS9RrYoocG1hQyf5c';
+  const apiKey = 'AIzaSyB2gRtfJY8cnKd8lxjsYE4oE-ag239HIDQ';
 
   // Function to search the organiser data
   const searchOrganiser = (input) => {

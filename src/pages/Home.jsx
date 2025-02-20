@@ -9,11 +9,33 @@ import { BsArrowRight } from "react-icons/bs";
 import About from "../components/About/About";
 import ServiceList from "../components/Services/ServiceList";
 import OrganiserList from "../components/Organisers/OrganiserList";
-
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase"; // Adjust the path to your Firebase config
+import { useState, useEffect } from "react";
+import OrganiserCard from "../components/Organisers/OrganiserCard";
 
 
 
 const Home = () => {
+  const [organisers, setOrganisers] = useState([]);
+  useEffect(() => {
+    const fetchOrganisers = async () => {
+      try {
+        const q = query(collection(db, "users"), where("role", "==", "organizer"));
+        const querySnapshot = await getDocs(q);
+        const organisersData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setOrganisers(organisersData);
+      } catch (error) {
+        console.error("Error fetching organisers: ", error);
+      }
+    };
+
+    fetchOrganisers();
+  }, []);
+
   return (
     <>
       {/* ----------------hero section----------*/}
@@ -199,7 +221,14 @@ const Home = () => {
               Find spectific organisers
             </p>
           </div>
-        <OrganiserList/>
+          <div className="container">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {organisers.map((organiser) => (
+              <OrganiserCard key={organiser.id} organiser={organiser} />
+            ))}
+          </div>
+        </div>
+          
       </div>
       </section>
 

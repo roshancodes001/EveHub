@@ -11,6 +11,7 @@ import Dashboard from "../Dashboard/organiser-account/Dashboard"
 
 import {Routes,Route} from 'react-router-dom'
 import ProtectedRoute from "./ProtectedRoute";
+import AddOrganisers from "../components/Organisers/AddOrganisers"
 
 const Routers = () =>{
     return <Routes>
@@ -24,6 +25,7 @@ const Routers = () =>{
         <Route path="/services" element={<Services/>}/>
         <Route path="/users/profile/me" element={<MyAccount/>}/>
         <Route path="/organisers/profile/me" element={<Dashboard/>}/>
+        <Route path="/organisers/add" element={<AddOrganisers/>}/>
     
     </Routes>
 };
